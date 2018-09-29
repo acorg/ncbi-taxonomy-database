@@ -39,9 +39,20 @@ $ tar xfz taxdump.tar.gz names.dmp nodes.dmp
 
 ## Building the database
 
+Adding all the data to the databases takes a lot of time. (And yes, the
+scripts load the data from the files before adding indices to the database
+tables in case you're wondering). It could take some hours. The input files
+are big (as on Sept 29, 2018):
+
+```sh
+$ du -s -h gi_taxid_*
+11G     gi_taxid_nucl.dmp
+8.9G    gi_taxid_prot.dmp
+```
+
 ### Sqlite3
 
-Run
+Run:
 
 ```sh
 $ create-sqlite.sh ncbi-taxonomy-sqlite.db
@@ -52,10 +63,10 @@ command line).
 
 ### Mysql
 
-Run
+Run:
 
 ```sh
-$ create-mysql.sh database-name
+$ create-mysql.sh [args] ncbi-taxonomy-mysql.db
 ```
 
 you will probably need to add additional arguments (like `--user` and
