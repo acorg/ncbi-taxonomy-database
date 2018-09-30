@@ -40,7 +40,7 @@ create index name_idx on names(taxID);
 
 .shell echo Importing nodes
 .separator '|'
-.import nodes.dmp.bz2 nodes
+.import nodes.dmp nodes
 .shell echo Indexing nodes.
 create index nodes_idx on nodes(taxID);
 
