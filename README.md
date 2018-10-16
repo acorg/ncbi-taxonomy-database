@@ -59,7 +59,7 @@ $ create-sqlite.sh ncbi-taxonomy-sqlite.db
 ```
 
 to make the database file (or give your own database filename on the
-command line). On my machine this cerates a 38GB database file.
+command line). On my machine this creates a 38GB database file.
 
 ### Mysql
 
