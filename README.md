@@ -1,5 +1,25 @@
 ## Creating a database from NCBI taxonomy data
 
+Here are brief instructions from the re-factoring done in August 2019 to
+use accession numbers not GI numbers. The original notes are below.
+
+If you have a `../taxonomy` directory containing the `*.dmp` NCBI taxonomy
+files from the tarball
+[here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/) and
+`nucl_gb.accession2taxid.gz` from
+[here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/) you can just
+run `make`, which will create you a 13GB Sqlite3 database file,
+`taxonomy.db` that can be used with the
+[AccessionLineageFetcher](https://github.com/acorg/dark-matter/blob/master/dark/taxonomy.py)
+Python class in [dark-matter](https://github.com/acorg/dark-matter/), or
+with similar code that you write yourself.
+
+If you want to do something else, you're on your own for the time being!
+But the scripts in this directory and in the dark matter code will
+hopefully be instructive.
+
+## Original README text for sqlite and mysql
+
 Here are scripts to help you create a database
 ([mysql](https://dev.mysql.com/) or
 [sqlite](https://www.sqlite.org/index.html)) from some of the NCBI's
