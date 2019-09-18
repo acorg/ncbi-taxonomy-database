@@ -19,8 +19,7 @@ cut -f1-3 -d\| < $nodeFile | tr -d '\011' | sed -e 's/^2559587|10239|no rank$/25
 
 sqlite3 <<EOT
 .open $dbfile
-DROP TABLE IF EXISTS nodes;
-CREATE TABLE nodes (
+CREATE TABLE IF NOT EXISTS nodes (
     taxid INTEGER NOT NULL,
     parent_taxid INTEGER NOT NULL,
     rank VARCHAR NOT NULL
@@ -28,5 +27,6 @@ CREATE TABLE nodes (
 
 .separator '|'
 .import $tmp nodes
-CREATE INDEX nodes_idx ON nodes(taxid);
+CREATE UNIQUE INDEX IF NOT EXISTS taxid_idx ON nodes(taxid);
+CREATE UNIQUE INDEX IF NOT EXISTS parent_idx ON nodes(parent_taxid);
 EOT

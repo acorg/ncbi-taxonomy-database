@@ -3,7 +3,7 @@
 Here are brief instructions from the re-factoring done in August 2019 to
 use accession numbers not GI numbers. The original notes are below.
 
-If you have a `../taxonomy` directory containing the `*.dmp` NCBI taxonomy
+If you have a `data` directory containing the `*.dmp` NCBI taxonomy
 files from the tarball
 [here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/) and
 `nucl_gb.accession2taxid.gz` from

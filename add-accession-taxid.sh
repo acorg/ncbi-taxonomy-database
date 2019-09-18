@@ -28,13 +28,12 @@ table=accession_taxid
 
 sqlite3 <<EOT
 .open $dbfile
-DROP TABLE IF EXISTS $table;
-CREATE TABLE $table (
+CREATE TABLE IF NOT EXISTS $table (
     accession VARCHAR UNIQUE PRIMARY KEY,
     taxid INTEGER NOT NULL
 );
 
 .mode tabs
 .import $tmp $table
-CREATE INDEX accession_idx ON $table(accession);
+CREATE UNIQUE INDEX IF NOT EXISTS accession_idx ON $table(accession);
 EOT

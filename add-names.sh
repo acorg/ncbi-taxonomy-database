@@ -18,13 +18,12 @@ egrep '\|	scientific name	\|' $names | tr -d '\011' | awk -F \| '{printf "%s|%s\
 
 sqlite3 <<EOT
 .open $dbfile
-DROP TABLE IF EXISTS names;
-CREATE TABLE names (
+CREATE TABLE IF NOT EXISTS names (
     taxid INTEGER NOT NULL,
     name VARCHAR NOT NULL
 );
 
 .separator '|'
 .import $tmp names
-CREATE INDEX name_idx ON names(taxid);
+CREATE UNIQUE INDEX IF NOT EXISTS name_idx ON names(taxid);
 EOT

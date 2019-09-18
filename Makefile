@@ -1,16 +1,19 @@
-TAXONOMY_DIR := ../taxonomy
+TAXONOMY_DIR := data
 DB = taxonomy.db
 
 $(DB): names nodes taxids
 
 taxids:
-	./sqlite-add-accession-taxid.sh $(TAXONOMY_DIR)/nucl_gb.accession2taxid.gz $(DB)
+	./add-accession-taxid.sh $(TAXONOMY_DIR)/nucl_gb.accession2taxid.gz $(DB)
 
 nodes:
-	./sqlite-add-nodes.sh $(TAXONOMY_DIR)/nodes.dmp $(DB)
+	./add-nodes.sh $(TAXONOMY_DIR)/nodes.dmp $(DB)
 
 names:
-	./sqlite-add-names.sh $(TAXONOMY_DIR)/names.dmp $(DB)
+	./add-names.sh $(TAXONOMY_DIR)/names.dmp $(DB)
+
+hosts:
+	./add-hosts.sh $(TAXONOMY_DIR)/host.dmp $(DB)
 
 clean:
 	rm -f $(DB)
