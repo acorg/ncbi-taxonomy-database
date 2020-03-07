@@ -24,16 +24,16 @@ case $nucl_gb in
     *) tail -n +2 < $nucl_gb | cut -f2,3 > $tmp;;
 esac
 
-table=accession_taxid
-
 sqlite3 <<EOT
 .open $dbfile
-CREATE TABLE IF NOT EXISTS $table (
+CREATE TABLE IF NOT EXISTS accession_taxid (
     accession VARCHAR UNIQUE PRIMARY KEY,
     taxid INTEGER NOT NULL
 );
 
+DROP INDEX IF EXISTS accession_taxid_accession_idx;
+
 .mode tabs
-.import $tmp $table
-CREATE UNIQUE INDEX IF NOT EXISTS accession_idx ON $table(accession);
+.import $tmp accession_taxid
+CREATE UNIQUE INDEX accession_taxid_accession_idx ON accession_taxid(accession);
 EOT

@@ -3,20 +3,34 @@
 Here are brief instructions from the re-factoring done in August 2019 to
 use accession numbers not GI numbers. The original notes are below.
 
-If you have a `data` directory containing the `*.dmp` NCBI taxonomy
-files from the tarball
-[here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/) and
-`nucl_gb.accession2taxid.gz` from
-[here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/) you can just
-run `make`, which will create you a 13GB Sqlite3 database file,
-`taxonomy.db` that can be used with the
+### Downloading the data files needed to build the taxonomy database
+
+In the `data` directory it is expected that you will have
+
+* The `*.dmp` NCBI taxonomy files from the tarball
+  [here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/), and
+* The `nucl_gb.accession2taxid.gz` file from
+  [here](ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/)
+
+You can either get these by hand or else just run `make download` in the
+`data` directory.
+
+### Building the taxonomy database
+
+Once you have the data files in place, you can just run `make`, which will
+create you a (currently 17GB) Sqlite3 database file, `taxonomy.db` that can
+be used with the
 [AccessionLineageFetcher](https://github.com/acorg/dark-matter/blob/master/dark/taxonomy.py)
 Python class in [dark-matter](https://github.com/acorg/dark-matter/), or
 with similar code that you write yourself.
 
+You can also just run `make xxx` (where `xxx` is one of `taxids`, `nodes`,
+`names` or `hosts`) in case you just want to recreate one of the tables in
+the database.
+
 If you want to do something else, you're on your own for the time being!
-But the scripts in this directory and in the dark matter code will
-hopefully be instructive.
+But the scripts in this directory, the `Makefile` in the `data` directory,
+and the dark matter code will hopefully be instructive.
 
 ## Original README text for sqlite and mysql
 

@@ -1,2 +1,5 @@
 taxonomy.db
-data
+data/*.dmp
+data/*.gz
+data/taxdump_readme.txt
+

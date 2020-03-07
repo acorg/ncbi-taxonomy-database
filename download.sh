@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+echo "This program is out of date. Run make download in the 'data' directory."
+exit 1
+
 ftp=ftp://ftp.ncbi.nih.gov/pub/taxonomy
 
 for file in gi_taxid_nucl.dmp gi_taxid_prot.dmp

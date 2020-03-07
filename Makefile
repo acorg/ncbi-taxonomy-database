@@ -1,7 +1,7 @@
 TAXONOMY_DIR := data
 DB = taxonomy.db
 
-$(DB): names nodes taxids
+$(DB): clean taxids nodes names hosts
 
 taxids:
 	./add-accession-taxid.sh $(TAXONOMY_DIR)/nucl_gb.accession2taxid.gz $(DB)
@@ -14,6 +14,9 @@ names:
 
 hosts:
 	./add-hosts.sh $(TAXONOMY_DIR)/host.dmp $(DB)
+
+vacuum:
+	./vaccum.sh $(DB)
 
 clean:
 	rm -f $(DB)

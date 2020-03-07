@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS hosts (
     hosts VARCHAR NOT NULL
 );
 
+DROP INDEX IF EXISTS hosts_taxid_idx;
+
 .separator '|'
 .import $tmp hosts
-CREATE UNIQUE INDEX IF NOT EXISTS taxid_idx ON hosts(taxid);
+CREATE UNIQUE INDEX hosts_taxid_idx ON hosts(taxid);
 EOT
