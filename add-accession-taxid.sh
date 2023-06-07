@@ -20,7 +20,7 @@ trap 'rm -f $tmp' 0 1 2 3 15
 # some reason you don't want the version, use column 1 (but then the
 # accession numbers are not unique).
 case $nucl_gb in
-    *.gz) zcat $nucl_gb | tail -n +2 | cut -f2,3 > $tmp;;
+    *.gz) gunzip -c < $nucl_gb | tail -n +2 | cut -f2,3 > $tmp;;
     *) tail -n +2 < $nucl_gb | cut -f2,3 > $tmp;;
 esac
 
